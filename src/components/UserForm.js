@@ -12,7 +12,7 @@ const UserForm = ({ onUserAdded }) => {
 
         try {
             // Make a POST request to add a new user
-            const response = await axios.post('http://localhost:3000/api/users', newUser);
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/users`, newUser);
             onUserAdded(response.data); // Callback to parent component with the new user data
             setName('');
             setEmail('');
