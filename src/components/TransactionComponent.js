@@ -12,8 +12,8 @@ const TransactionComponent = () => {
     useEffect(() => {
         // Fetch users and books on component mount
         const fetchUsersAndBooks = async () => {
-            const usersResponse = await axios.get('http://localhost:3000/api/users');
-            const booksResponse = await axios.get('http://localhost:3000/api/books');
+            const usersResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/users`);
+            const booksResponse = await axios.get(`${process.env.REACT_APP_API_URL}/api/books`);
             setUsers(usersResponse.data);
             setBooks(booksResponse.data);
         };
@@ -23,7 +23,7 @@ const TransactionComponent = () => {
 
     const handleIssueBook = async () => {
         try {
-            await axios.post('http://localhost:3000/api/transactions/issue', {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/transactions/issue`, {
                 userId: selectedUserId,
                 bookId: selectedBookId,
                 issueDate,
@@ -40,7 +40,7 @@ const TransactionComponent = () => {
 
     const handleReturnBook = async () => {
         try {
-            await axios.post('http://localhost:3000/api/transactions/return', {
+            await axios.post(`${process.env.REACT_APP_API_URL}/api/transactions/return`, {
                 userId: selectedUserId,
                 bookId: selectedBookId,
                 returnDate,
